@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+  
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Analytics Models Panel</span>
+      <span class="text-light">Active Session | v1.0</span>
+    </div>
+  </nav>
+
+  
+  <main class="container mt-4">
+    <h1 class="mb-4">Machine Learning</h1>
+
+    
+    <ul class="nav nav-tabs" id="mlTabs" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#what">What is?</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#purpose">Purpose</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#data">Data & Models</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#importance">Importance</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#examples">Examples</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#types">Types</button></li>
+    </ul>
+
+    
+    <div class="tab-content mt-3">
+      
+      <div class="tab-pane fade show active" id="what">
+        <h2>What is Machine Learning?</h2>
+        <p>
+          Machine Learning is a subfield of Artificial Intelligence that focuses on building systems capable of automatically learning and improving from experience. 
+          Instead of being explicitly programmed for every task, these systems use algorithms that identify patterns in data and make predictions or decisions. 
+          This approach allows computers to adapt to new situations and solve complex problems that traditional programming cannot easily handle.
+        </p>
+        <p>
+          The essence of Machine Learning lies in its ability to generalize from examples. By analyzing large datasets, algorithms can detect underlying structures 
+          and relationships, enabling them to make informed predictions on new, unseen data. This makes ML a cornerstone of modern applications ranging from 
+          recommendation systems to medical diagnostics.
+        </p>
+      </div>
+
+      
+      <div class="tab-pane fade" id="purpose">
+        <h2>Main Purpose of Machine Learning</h2>
+        <p>
+          The primary goal of Machine Learning is to enable computers to perform tasks intelligently by generalizing from examples. 
+          It aims to reduce human intervention in repetitive or large-scale decision-making processes, while increasing accuracy and efficiency. 
+          By learning from historical data, ML systems can forecast future outcomes, detect anomalies, and provide personalized recommendations.
+        </p>
+        <p>
+          In practice, this means that ML can automate processes that would otherwise require human judgment, such as fraud detection in banking, 
+          predictive maintenance in manufacturing, or personalized content delivery in digital platforms. The purpose is not only to save time and resources, 
+          but also to uncover insights that humans might overlook due to the sheer scale or complexity of the data.
+        </p>
+      </div>
+
+      
+      <div class="tab-pane fade" id="data">
+        <h2>Relationship between Data, Training, Models, and Predictions</h2>
+        <p>
+          Data is the foundation of Machine Learning. During training, algorithms process large datasets to adjust internal parameters and build a model. 
+          The model represents learned knowledge and can then be used to make predictions on new, unseen data.
+        </p>
+        <ul>
+          <li><strong>Data:</strong> provides the raw information.</li>
+          <li><strong>Training:</strong> teaches the algorithm to recognize patterns.</li>
+          <li><strong>Model:</strong> is the result of training, capturing those patterns.</li>
+          <li><strong>Predictions:</strong> are the outputs generated when the model is applied to new inputs.</li>
+        </ul>
+      </div>
+
+      
+      <div class="tab-pane fade" id="importance">
+        <h2>Importance of Data in Machine Learning</h2>
+        <p>
+          High-quality data is essential for reliable models. If the dataset is biased, incomplete, or noisy, the model will produce inaccurate results. 
+          Conversely, diverse and representative datasets allow ML systems to generalize better and perform well in real-world scenarios. 
+          The saying “garbage in, garbage out” highlights that poor data leads to poor predictions.
+        </p>
+        <p>
+          In addition, the importance of data extends to ethical considerations. Biased datasets can reinforce discrimination, while transparent and well-curated 
+          data can promote fairness and accountability in automated decision-making systems.
+        </p>
+      </div>
+
+      
+      <div class="tab-pane fade" id="examples">
+        <h2>Simple Examples of Machine Learning Applications</h2>
+        <ul>
+          <li><strong>Image recognition:</strong> Identifying objects or faces in photos.</li>
+          <li><strong>Fraud detection:</strong> Spotting unusual patterns in financial transactions.</li>
+          <li><strong>Recommendation systems:</strong> Suggesting movies, music, or products based on user preferences.</li>
+          <li><strong>Predictive analytics:</strong> Forecasting sales, medical diagnoses, or customer behavior.</li>
+        </ul>
+        <p>
+          These examples demonstrate how ML is embedded in everyday life, often invisibly, but with significant impact on efficiency, personalization, and security.
+        </p>
+      </div>
+
+      
+      <div class="tab-pane fade" id="types">
+        <h2>Types of Machine Learning</h2>
+
+        <h3>Supervised Learning</h3>
+        <p>
+          A method where the algorithm learns from labeled data, meaning each input comes with a known output. 
+          Requires large datasets with correct labels; produces predictive models that can classify or estimate values. 
+          Problems solved include classification tasks (spam detection, disease diagnosis) and regression tasks (predicting housing prices, sales forecasting).
+        </p>
+
+        <h3>Unsupervised Learning</h3>
+        <p>
+          A method where the algorithm explores data without predefined labels, discovering hidden structures or groupings. 
+          Focuses on clustering, dimensionality reduction, and anomaly detection; useful when labels are unavailable. 
+          Problems solved include customer segmentation, grouping similar products, and detecting unusual patterns in network traffic.
+        </p>
+
+        <h3>Reinforcement Learning</h3>
+        <p>
+          A method where an agent learns by interacting with an environment, receiving rewards for good actions and penalties for bad ones. 
+          Trial-and-error learning, sequential decision-making, adapts strategies over time. 
+          Problems solved include training robots to walk, teaching AI to play games like chess or Go, and optimizing autonomous vehicle navigation.
+        </p>
+      </div>
+    </div>
+
+    
+    <div class="mt-4">
+      <a href="/" class="btn btn-secondary">← Return to menu</a>
+    </div>
+  </main>
+
+  
+  <footer class="text-center text-muted py-3 mt-4">
+    © 2026 — Internal data analysis system
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

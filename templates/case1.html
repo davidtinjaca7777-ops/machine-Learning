@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Case 1 – Sales Forecast</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-light py-3 text-center">
+  <h1>Case 1 – Sales Forecast</h1>
+</header>
+
+<main class="container mt-4">
+ 
+  <ul class="nav nav-tabs" id="caseTabs" role="tablist">
+    <li class="nav-item"><a class="nav-link active" id="nombre-tab" data-bs-toggle="tab" href="#nombre" role="tab">Name</a></li>
+    <li class="nav-item"><a class="nav-link" id="contexto-tab" data-bs-toggle="tab" href="#contexto" role="tab">Context</a></li>
+    <li class="nav-item"><a class="nav-link" id="datos-tab" data-bs-toggle="tab" href="#datos" role="tab">Data</a></li>
+    <li class="nav-item"><a class="nav-link" id="objetivo-tab" data-bs-toggle="tab" href="#objetivo" role="tab">Model Objective</a></li>
+    <li class="nav-item"><a class="nav-link" id="tipo-tab" data-bs-toggle="tab" href="#tipo" role="tab">Type of ML</a></li>
+    <li class="nav-item"><a class="nav-link" id="beneficio-tab" data-bs-toggle="tab" href="#beneficio" role="tab">Benefits</a></li>
+  </ul>
+
+ 
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="nombre" role="tabpanel">
+      <h3>Use Case Name</h3>
+      <p><strong>Sales Forecasting in Retail</strong>. The goal is to anticipate product demand in physical and online stores.</p>
+    </div>
+
+    <div class="tab-pane fade" id="contexto" role="tabpanel">
+      <h3>Problem Context</h3>
+      <p>
+        Retail companies face fluctuations in demand due to seasonality, promotions, and consumption trends. 
+        Accurate forecasting enables efficient inventory planning and marketing strategies.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="datos" role="tabpanel">
+      <h3> Data that could be used</h3>
+      <p>
+        Sales history, prices, promotions, customer count, store locations, external factors like weather or special events.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="objetivo" role="tabpanel">
+      <h3>What the model should predict</h3>
+      <p>
+        The model should estimate future sales of each product based on historical and external variables. 
+        This helps anticipate demand and avoid stockouts.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="tipo" role="tabpanel">
+      <h3>Type of Machine Learning</h3>
+      <p>
+        <strong>Multivariate Linear Regression</strong> or more advanced supervised models like Random Forest or XGBoost. 
+        These algorithms allow capturing relationships between multiple variables and improving accuracy.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="beneficio" role="tabpanel">
+      <h3>Potential Benefits</h3>
+      <p>
+        Inventory optimization, reduced storage costs, and increased customer satisfaction by avoiding stockouts. 
+        Additionally, it improves marketing campaign planning and strategic decision-making.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3 mt-4">
+  © 2026 — Internal Data Analysis System
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

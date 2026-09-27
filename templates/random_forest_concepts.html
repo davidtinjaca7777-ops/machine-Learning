@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Forest – Concepts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <h1 class="navbar-brand mb-0">Random Forest – Concepts</h1>
+    <span class="text-light">Active Session | v1.0</span>
+  </div>
+</nav>
+
+<main class="container mt-4">
+  
+  <ul class="nav nav-tabs" id="rfTabs" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#definicion" type="button">Definition</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#funcionamiento" type="button">How it Works</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#problemas" type="button">Types of Problems</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#caracteristicas" type="button">Main Characteristics</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ventajas" type="button">Advantages</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#limites" type="button">Limitations</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ejemplo" type="button">Real-life Example</button></li>
+  </ul>
+
+  
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="definicion">
+      <h2>Definition</h2>
+      <p>Random Forest is a supervised learning algorithm based on the combination of multiple decision trees to improve accuracy and reduce overfitting.</p>
+    </div>
+
+    <div class="tab-pane fade" id="funcionamiento">
+      <h2>How it Works</h2>
+      <p>It generates many decision trees trained on random subsets of data and features. The final prediction is obtained by voting (classification) or averaging (regression).</p>
+    </div>
+
+    <div class="tab-pane fade" id="problemas">
+      <h2>Types of Problems</h2>
+      <ul>
+        <li>Binary and multiclass classification.</li>
+        <li>Regression with continuous variables.</li>
+        <li>Problems with tabular and structured data.</li>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="caracteristicas">
+      <h2>Main Characteristics</h2>
+      <ul>
+        <li>Use of bootstrap (random samples with replacement).</li>
+        <li>Random selection of variables at each split.</li>
+        <li>Robustness against noise and outliers.</li>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="ventajas">
+      <h2>Advantages</h2>
+      <ul>
+        <li>High accuracy compared to a single tree.</li>
+        <li>Reduces the risk of overfitting.</li>
+        <li>Works well with large datasets.</li>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="limites">
+      <h2>Limitations</h2>
+      <ul>
+        <li>Less interpretable than a single tree.</li>
+        <li>Higher computational cost.</li>
+        <li>Not always the best option for very sparse data.</li>
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="ejemplo">
+      <h2>Real-life Example</h2>
+      <p>In a bank, Random Forest can be used to predict whether a customer will approved for a loan. Multiple trees are trained with data such as income, payment history, and age, and the final decision is made by voting of all the trees.</p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3 mt-4">
+  © 2026 — Internal data analysis system
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

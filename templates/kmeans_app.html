@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K-Means App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='kmeans-theme.css') }}" rel="stylesheet">
+</head>
+<body class="kmeans-page">
+
+<header class="km-hero">
+  <a href="/" class="km-breadcrumb">← Main menu</a>
+  <div class="km-eyebrow">Unsupervised Learning</div>
+  <h1>K-Means — Interactive Simulator</h1>
+  <p>Enter a new student's study hours and grade to discover which cluster they belong to.</p>
+</header>
+
+<main class="km-main">
+
+  <div class="km-form-card">
+    <h2 class="mb-3">🔮 Predict Cluster</h2>
+    <form method="POST">
+      <div class="mb-3">
+        <label for="study_hours" class="form-label">Study Hours per Week</label>
+        <input type="number" step="0.1" class="form-control" id="study_hours" name="study_hours" required>
+      </div>
+      <div class="mb-3">
+        <label for="grade" class="form-label">Average Grade</label>
+        <input type="number" step="0.1" class="form-control" id="grade" name="grade" required>
+      </div>
+      <button type="submit" class="btn btn-km">Predict Cluster</button>
+    </form>
+  </div>
+
+  {% if prediction is not none %}
+  <div class="km-card">
+    <h2>🎯 Result</h2>
+    <p class="km-value">Cluster {{ prediction }}</p>
+    <p class="km-def">This is the closest group to the entered student, based on the distance to the centroids.</p>
+  </div>
+  <div class="text-center mt-3">
+    <img src="{{ url_for('static', filename='kmeans_plot.png') }}" class="img-fluid km-plot" alt="K-Means Plot">
+  </div>
+  {% endif %}
+
+  <div class="km-grid mt-4">
+    {% if inertia %}
+    <div class="km-card">
+      <h2>📉 Inertia</h2>
+      <p class="km-value">{{ inertia }}</p>
+      <p class="km-def"><strong>What is it?</strong> Measures how close students are to their assigned centroid (sum of squared distances). The lower the value, the more compact and homogeneous the clusters are.</p>
+    </div>
+    {% endif %}
+
+    {% if silhouette %}
+    <div class="km-card">
+      <h2>📊 Silhouette Score</h2>
+      <p class="km-value">{{ silhouette }}</p>
+      <p class="km-def"><strong>What is it?</strong> Indicates how well separated the clusters are from each other. It ranges from -1 to 1: values close to 1 mean well-defined, well-separated clusters; values close to 0 indicate overlapping clusters.</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if centroids %}
+  <div class="km-card mt-4">
+    <h2>🎯 Centroids</h2>
+    <p class="km-def mb-3"><strong>Centroid:</strong> the average point (study hours and grade) that represents the "center" of each cluster.</p>
+    <table class="table table-bordered text-center mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Cluster</th>
+          <th>Study Hours</th>
+          <th>Calification</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in centroids %}
+        <tr>
+          <td>{{ c.Cluster }}</td>
+          <td>{{ c.Study_Hours|round(2) }}</td>
+          <td>{{ c.Calification|round(2) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  {% if table %}
+  <div class="km-card mt-4">
+    <h2>🗂️ Student Table with Clusters</h2>
+    <p class="km-def mb-3"><strong>Cluster:</strong> the group assigned to each student based on the similarity between their study hours and their grade.</p>
+    {{ table|safe }}
+  </div>
+  {% endif %}
+
+  <div class="text-center">
+    <a href="/" class="km-back-link">← Back to menu</a>
+  </div>
+</main>
+
+<footer>
+  © 2026 Analytical Models Dashboard
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

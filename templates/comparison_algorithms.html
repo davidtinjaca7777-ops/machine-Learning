@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Comparison of Algorithms</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <h1 class="navbar-brand mb-0">Comparison of Algorithms</h1>
+    <span class="text-light">Active Session | v1.0</span>
+  </div>
+</nav>
+
+<main class="container mt-4">
+
+  
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h2>Comparative Summary</h2>
+      <p>
+        This page compares the algorithms implemented in the system according to their purpose,
+        advantages, limitations and ideal usage scenarios.
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h2>Comparative Table</h2>
+      <table class="table table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Algorithm</th>
+            <th>Type</th>
+            <th>Primary Use</th>
+            <th>Advantages</th>
+            <th>Limitations</th>
+            <th>Complexity</th>
+            <th>Interpretabilidad</th>
+            <th>Ideal Scenarios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Logistic Regression</td>
+            <td>Classification</td>
+            <td>Binary prediction (buy/not buy)</td>
+            <td>Simple, interpretable, fast</td>
+            <td>Does not handle complex non-linear relationships</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>Marketing, predicción de churn</td>
+          </tr>
+          <tr>
+            <td>Random Forest</td>
+            <td>Classification / Regression</td>
+            <td>Complex problems with many variables</td>
+            <td>Robust, handles non-linearity, variable importance</td>
+            <td>More computationally intensive, less interpretable</td>
+            <td>Medium-High</td>
+            <td>Medium</td>
+            <td>Fraude, scoring de crédito</td>
+          </tr>
+          <tr>
+            <td>Linear Regression</td>
+            <td>Regression</td>
+            <td>Prediction of continuous values</td>
+            <td>Easy to understand, fast</td>
+            <td>Sensitive to outliers, only linear relationships</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>Prediction of income, prices</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h2>Visualization of Metrics</h2>
+      <p>The chart shows the comparison of accuracy for each algorithm in the dataset.</p>
+      <img src="{{ url_for('static', filename='comparison_metrics.png') }}" class="img-fluid rounded" alt="Comparison of metrics">
+    </div>
+  </div>
+
+  <!-- Conclusiones -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h2>Conclusions</h2>
+      <p>The choice of algorithm depends on the type of problem:</p>
+      <ul>
+        <li><strong>Logistic Regression:</strong> ideal for simple binary problems and high interpretability.</li>
+        <li><strong>Random Forest:</strong> recommended for complex data and when robustness is required.</li>
+        <li><strong>Linear Regression:</strong> useful for continuous predictions with linear relationships.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3 mt-4">
+  © 2026 — Internal data analysis system
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

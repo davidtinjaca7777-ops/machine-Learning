@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K-Means Manual (Excel)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='kmeans-theme.css') }}" rel="stylesheet">
+</head>
+<body class="kmeans-page">
+
+<header class="km-hero">
+  <a href="/" class="km-breadcrumb">← Main menu</a>
+  <div class="km-eyebrow">Unsupervised Learning</div>
+  <h1>K-Means — Manual Exercise</h1>
+  <p>Step-by-step calculation of the first K-Means iteration, done in Excel.</p>
+</header>
+
+<main class="km-main">
+
+  <div class="km-card">
+    <h2>📝 Explanation of the Exercise</h2>
+    <p>
+      The topic is the <strong>segmentation of students</strong> according to their study hours and academic performance.
+      A dataset of <strong>100 students</strong> was used with two numerical variables:
+      <em>study hours per week</em> and <em>average grade out of 100</em>.
+    </p>
+    <p>
+      Since <strong>3 clusters</strong> were defined, three initial centroids were selected:
+      C1=(3,45), C2=(8,65) and C3=(14,85). Each centroid represents an initial group in the plane.
+    </p>
+    <p>
+      To assign each student to a cluster, the <strong>Euclidean distance</strong> between the student and each centroid was calculated:
+    </p>
+    <pre class="p-3" style="background:#f3e8f7; border-radius: 12px;">d = √((X - Xc)² + (Y - Yc)²)</pre>
+    <p>
+      Example: Student 1 (2,45) has distances of 1 to C1, 20.88 to C2 and 41.76 to C3.
+      Since the minimum distance is 1, the student is assigned to <strong>Cluster 1</strong>.
+    </p>
+    <p>
+      In Excel, the SQRT and AVERAGEIF formulas allow automatically calculating the distances and new centroids.
+      For example, the Cluster column uses:
+    </p>
+    <pre class="p-3" style="background:#f3e8f7; border-radius: 12px;">=IF(D2=MIN(D2:F2),"C1",IF(E2=MIN(D2:F2),"C2","C3"))</pre>
+    <p>
+      After assigning the 100 students, the centroids are recalculated as the average of study hours and grades for each group.
+      These new centroids will be used in the <strong>Iteration 2</strong>.
+    </p>
+    <p class="mb-0">
+      In conclusion, <strong>Iteration 1</strong> consists of: starting with initial centroids, calculating distances,
+      assigning students to clusters and recalculating centroids. This process is repeated until the centroids stabilize.
+    </p>
+  </div>
+
+  <div class="km-card mt-4">
+    <h2>📊 Iteration 1 Data (Excel)</h2>
+    {{ table|safe }}
+  </div>
+
+  <div class="km-card mt-4">
+    <h2>✅ Conclusion</h2>
+    <p class="mb-0">
+      The first iteration shows how students are grouped according to the minimum distance to the initial centroids.
+      The newly calculated centroids reflect the average of each group and allow continuing with the next iteration.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <a href="/" class="km-back-link">← Back to menu</a>
+  </div>
+</main>
+
+<footer>
+  © 2026 — Internal Data Analysis System
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

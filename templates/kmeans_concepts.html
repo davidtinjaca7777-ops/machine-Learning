@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K-Means: Concepts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='kmeans-theme.css') }}" rel="stylesheet">
+</head>
+<body class="kmeans-page">
+
+<header class="km-hero">
+  <a href="/" class="km-breadcrumb">← Main menu</a>
+  <div class="km-eyebrow">Unsupervised Learning</div>
+  <h1>K-Means — Concepts</h1>
+  <p>Everything you need to know about the algorithm: what it is, how it works, and the role centroids play.</p>
+</header>
+
+<main class="km-main">
+
+  <ul class="nav km-tabs" id="conceptTabs" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#definicion">Definition</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#clustering">Clustering</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#funcionamiento">Operation</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#centroides">Centroids</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#iteraciones">Iterations</button></li>
+  </ul>
+
+  <div class="tab-content km-card">
+    <div class="tab-pane fade show active" id="definicion">
+      <h2>📖 Definition</h2>
+      <p>
+        K-Means is an <strong>unsupervised learning</strong> algorithm used to group data into a fixed number of groups called <em>clusters</em>.
+        Unlike supervised methods, there are no prior labels: the algorithm discovers patterns and similarities in the data by itself.
+        Each cluster is represented by a <strong>centroid</strong>, which is the mean point of the records assigned to that group.
+        The goal of K-Means is to minimize the distance between the records and their centroid, achieving groups that are as compact and distinct as possible.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="clustering">
+      <h2>🧩 Clustering</h2>
+      <p>
+        <em>Clustering</em> is a segmentation technique that divides a dataset into homogeneous groups.
+        The idea is that elements within the same cluster share similar characteristics, while elements from different clusters are distinct from each other.
+        This approach is applied in multiple fields: customer segmentation in marketing, document grouping in search engines, image classification, user behavior analysis, among others.
+        In the case of students, clustering allows identifying academic profiles based on their study hours and grades.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="funcionamiento">
+      <h2>⚙️ Operation of K-Means</h2>
+      <p>
+        The algorithm follows an iterative process that ensures clusters progressively adapt to the actual structure of the data:
+      </p>
+      <ol>
+        <li><strong>Initialization:</strong> k initial centroids are chosen randomly.</li>
+        <li><strong>Assignment:</strong> each record is assigned to the cluster whose centroid is closest, calculating the Euclidean distance.</li>
+        <li><strong>Update:</strong> centroids are recalculated as the mean of the records assigned to each cluster.</li>
+        <li><strong>Iteration:</strong> the steps of assignment and update are repeated until the centroids stop moving significantly or the maximum number of iterations is reached.</li>
+      </ol>
+      <p>
+        This cycle ensures that the final clusters are consistent and reflect real patterns in the data.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="centroides">
+      <h2>🎯 Role of Centroids</h2>
+      <p>
+        Centroids are the heart of the algorithm. They represent the "center" of each cluster and determine how records are grouped.
+        At the beginning, centroids may be far from the data, but with each iteration they adjust until they reflect the average position of the assigned records.
+        In practical terms, centroids are the coordinates that summarize the typical behavior of each group.
+        For example, a centroid may represent students with few study hours and low grades, while another may represent students with many study hours and high grades.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="iteraciones">
+      <h2>🔁 Iterations</h2>
+      <p>
+        Each iteration is a complete cycle of assignment and update.
+        In the first iteration, the initial centroids are often not representative, but after several iterations the centroids converge to stable positions.
+        The algorithm stops when the centroids no longer change significantly or when the maximum number of iterations is reached.
+        This process ensures that the final clusters are consistent and reflect real patterns in the data.
+      </p>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="/" class="km-back-link">← Back to menu</a>
+  </div>
+</main>
+
+<footer>
+  © 2026 — Internal data analysis system
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

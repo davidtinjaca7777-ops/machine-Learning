@@ -1,0 +1,209 @@
+/* ===========================================================
+   K-Means Section — Distinct Theme
+   A deliberately different visual identity from the rest of
+   the dashboard: warm gradient accents, rounded stat cards,
+   and a dedicated hero header.
+   =========================================================== */
+
+:root {
+  --km-accent-1: #f97316;
+  --km-accent-2: #ec4899;
+  --km-accent-3: #8b5cf6;
+  --km-dark: #1c1024;
+  --km-surface: #fffaf5;
+  --km-card: #ffffff;
+  --km-radius: 20px;
+}
+
+body.kmeans-page {
+  background: var(--km-surface);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Override the generic header for a hero banner instead */
+body.kmeans-page header.km-hero {
+  background: linear-gradient(120deg, var(--km-dark) 0%, #3b1d4f 45%, var(--km-accent-3) 100%);
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 10px 30px rgba(28, 16, 36, 0.35);
+}
+
+body.kmeans-page header.km-hero .km-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--km-accent-1);
+  font-weight: 700;
+}
+
+body.kmeans-page header.km-hero h1 {
+  color: #fff;
+  font-weight: 800;
+  font-size: 2.4rem;
+  margin-top: 0.4rem;
+}
+
+body.kmeans-page header.km-hero p {
+  color: #e9d8f0;
+  max-width: 640px;
+  margin: 0.75rem auto 0;
+}
+
+/* Pill navigation back to the rest of the site */
+body.kmeans-page .km-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+body.kmeans-page .km-breadcrumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+/* Main content area */
+body.kmeans-page main.km-main {
+  max-width: 980px;
+  margin: -2rem auto 3rem;
+  background: transparent;
+  box-shadow: none;
+  padding: 0 1rem;
+}
+
+/* Stat / metric cards */
+body.kmeans-page .km-card {
+  background: var(--km-card);
+  border: none;
+  border-radius: var(--km-radius);
+  box-shadow: 0 6px 20px rgba(60, 20, 70, 0.10);
+  padding: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+body.kmeans-page .km-card h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--km-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+body.kmeans-page .km-card .km-value {
+  font-size: 2.1rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--km-accent-1), var(--km-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.kmeans-page .km-card .km-def {
+  color: #6b5b73;
+  font-size: 0.88rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Grid for stat cards side by side */
+body.kmeans-page .km-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+body.kmeans-page .km-grid .km-card {
+  margin-top: 0;
+}
+
+/* Form card */
+body.kmeans-page .km-form-card {
+  background: linear-gradient(135deg, #fff 0%, #fdf1fa 100%);
+  border-radius: var(--km-radius);
+  padding: 1.75rem;
+  box-shadow: 0 6px 20px rgba(60, 20, 70, 0.10);
+}
+
+body.kmeans-page .form-label {
+  font-weight: 600;
+  color: var(--km-dark);
+}
+
+body.kmeans-page .form-control:focus {
+  border-color: var(--km-accent-3);
+  box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.20);
+}
+
+body.kmeans-page .btn-km {
+  background: linear-gradient(90deg, var(--km-accent-1), var(--km-accent-2));
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.35);
+  transition: transform 0.15s ease;
+}
+
+body.kmeans-page .btn-km:hover {
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* Tabs restyled as pills */
+body.kmeans-page .km-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+body.kmeans-page .km-tabs .nav-link {
+  border: none;
+  border-radius: 999px;
+  background: #f3e8f7;
+  color: var(--km-dark);
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+}
+
+body.kmeans-page .km-tabs .nav-link.active {
+  background: linear-gradient(90deg, var(--km-accent-1), var(--km-accent-2));
+  color: #fff;
+}
+
+/* Result image */
+body.kmeans-page .km-plot {
+  border-radius: var(--km-radius);
+  box-shadow: 0 10px 26px rgba(60, 20, 70, 0.18);
+}
+
+/* Footer */
+body.kmeans-page footer {
+  text-align: center;
+  color: #a891ae;
+  font-size: 0.85rem;
+  padding: 1.5rem 0;
+}
+
+body.kmeans-page .km-back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--km-accent-3);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+body.kmeans-page .km-back-link:hover {
+  text-decoration: underline;
+}

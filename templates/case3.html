@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Case 3 – Customer Segmentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-light py-3 text-center">
+  <h1>Case 3 – Customer Segmentation</h1>
+</header>
+
+<main class="container mt-4">
+  <!-- Pestañas -->
+  <ul class="nav nav-tabs" id="caseTabs" role="tablist">
+    <li class="nav-item"><a class="nav-link active" id="nombre-tab" data-bs-toggle="tab" href="#nombre" role="tab">Name</a></li>
+    <li class="nav-item"><a class="nav-link" id="contexto-tab" data-bs-toggle="tab" href="#contexto" role="tab">Context</a></li>
+    <li class="nav-item"><a class="nav-link" id="datos-tab" data-bs-toggle="tab" href="#datos" role="tab">Data</a></li>
+    <li class="nav-item"><a class="nav-link" id="objetivo-tab" data-bs-toggle="tab" href="#objetivo" role="tab">Model Objective</a></li>
+    <li class="nav-item"><a class="nav-link" id="tipo-tab" data-bs-toggle="tab" href="#tipo" role="tab">Type of ML</a></li>
+    <li class="nav-item"><a class="nav-link" id="beneficio-tab" data-bs-toggle="tab" href="#beneficio" role="tab">Benefits</a></li>
+  </ul>
+
+  
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="nombre" role="tabpanel">
+      <h3>Use Case Name</h3>
+      <p><strong>Customer Segmentation</strong>. The goal is to group customers into homogeneous categories based on their characteristics and behaviors.</p>
+    </div>
+
+    <div class="tab-pane fade" id="contexto" role="tabpanel">
+      <h3>Problem Context</h3>
+      <p>
+        Companies need to better understand their customers to design personalized marketing strategies. 
+        Without segmentation, there is a risk of offering irrelevant products or services and missing opportunities for customer loyalty.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="datos" role="tabpanel">
+      <h3>Data that could be used</h3>
+      <p>
+        Demographic information (age, gender, location), purchase history, visit frequency, average spending, product preferences and digital behavior (clicks, website navigation).
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="objetivo" role="tabpanel">
+      <h3>Model Objective</h3>
+      <p>
+        The model should identify groups of customers with similar characteristics. 
+        This allows for the creation of segment profiles and the design of specific campaigns for each group.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="tipo" role="tabpanel">
+      <h3>Type of Machine Learning</h3>
+      <p>
+        <strong>Unsupervised Learning</strong> techniques such as K-Means or hierarchical clustering are applied. 
+        These algorithms allow for the discovery of hidden patterns without the need for prior labels.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="beneficio" role="tabpanel">
+      <h3>Potential Benefits</h3>
+      <p>
+        Improvement in marketing campaign effectiveness, increased customer satisfaction, and optimization of resource allocation. 
+        Additionally, it enables the identification of high-value customers and the design of specific retention strategies.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+   <a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3 mt-4">
+  © 2026 — Internal data analysis system
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

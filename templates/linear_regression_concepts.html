@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Linear Regression – Concepts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-light py-3 text-center">
+  <h1>Linear Regression – Concepts</h1>
+</header>
+
+<main class="container mt-4">
+  
+  <ul class="nav nav-tabs" id="regressionTabs" role="tablist">
+    <li class="nav-item"><a class="nav-link active" id="quees-tab" data-bs-toggle="tab" href="#quees" role="tab">What is Linear Regression?</a></li>
+    <li class="nav-item"><a class="nav-link" id="problemas-tab" data-bs-toggle="tab" href="#problemas" role="tab">Types of Problems</a></li>
+    <li class="nav-item"><a class="nav-link" id="dependiente-tab" data-bs-toggle="tab" href="#dependiente" role="tab">Dependent Variable</a></li>
+    <li class="nav-item"><a class="nav-link" id="independiente-tab" data-bs-toggle="tab" href="#independiente" role="tab">Independent Variable</a></li>
+    <li class="nav-item"><a class="nav-link" id="relacion-tab" data-bs-toggle="tab" href="#relacion" role="tab">Relationship between Variables</a></li>
+    <li class="nav-item"><a class="nav-link" id="recta-tab" data-bs-toggle="tab" href="#recta" role="tab">Regression Line</a></li>
+    <li class="nav-item"><a class="nav-link" id="prediccion-tab" data-bs-toggle="tab" href="#prediccion" role="tab">Prediction</a></li>
+    <li class="nav-item"><a class="nav-link" id="ejemplo-tab" data-bs-toggle="tab" href="#ejemplo" role="tab">Simple Example</a></li>
+  </ul>
+
+  
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="quees" role="tabpanel">
+      <h3>What is Linear Regression?</h3>
+      <p>
+        Linear regression is a statistical technique that seeks to represent the relationship between a dependent variable and one or more independent variables through a straight line.
+        It is used to understand how changes in the explanatory variables affect the outcome and to make predictions based on historical data.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="problemas" role="tabpanel">
+      <h3>Types of Problems it Solves</h3>
+      <p>
+        This model is applied in situations where it is necessary to estimate continuous values, such as income, housing prices, or future sales. 
+        It also allows identifying trends and quantifying the impact of different factors on an outcome.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="dependiente" role="tabpanel">
+      <h3>Dependent Variable</h3>
+      <p>
+        It is the target variable that we want to predict, typically represented as Y in the equation. 
+        Example: monthly income of a company or the price of a product in the market.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="independiente" role="tabpanel">
+      <h3>Independent Variable</h3>
+      <p>
+        These are the input features or attributes (X) that influence the outcome. 
+        Example: number of customers, advertising investment, or store size.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="relacion" role="tabpanel">
+      <h3>Relationship between Variables</h3>
+      <p>
+        Linear regression assumes that there is a proportional relationship between the independent and dependent variables. 
+        This means that a change in X generates a predictable change in Y, following the slope of the fitted line.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="recta" role="tabpanel">
+      <h3>Regression Line</h3>
+      <p>
+        The general equation is <strong>Y = β₀ + β₁X</strong>, where β₀ is the intercept and β₁ is the slope. 
+        This line represents the best linear approximation to the observed data, minimizing the prediction error.
+      </p>
+      <div class="text-center mt-3">
+  <img src="https://copilot.microsoft.com/th/id/BCO.1f6358f5-7fed-4146-8790-d84c33532a09.png" 
+       alt="Regression Line" 
+       class="img-fluid rounded shadow">
+  <p class="text-muted mt-2">Illustration of the regression line: Y = β₀ + β₁X</p>
+</div>
+
+    </div>
+
+    <div class="tab-pane fade" id="prediccion" role="tabpanel">
+      <h3>Prediction</h3>
+      <p>
+        Once the model is trained, the regression line can be used to estimate future values of Y based on new values of X. 
+        This allows anticipating results and making strategic decisions based on reliable data.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="ejemplo" role="tabpanel">
+      <h3>Simple Example</h3>
+      <p>
+        Let's say we want to predict the revenue of a store based on the number of customers. 
+        If the fitted line is <strong>Revenue = 50 + 20 × Customers</strong>, then with 100 customers we estimate revenue of 2,050 monetary units.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3 mt-4">
+  © 2026 — Internal Data Analysis System
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
