@@ -1,0 +1,79 @@
+{% extends "rl_base.html" %}
+{% block title %}Reinforcement Learning – Application{% endblock %}
+{% block navtitle %}Reinforcement Learning – Application{% endblock %}
+{% block content %}
+<style>
+ .rl-grid{border-collapse:separate;border-spacing:3px}
+ .rl-grid td{width:44px;height:44px;text-align:center;vertical-align:middle;font-weight:700;border-radius:6px;font-family:monospace}
+ .c-A{background:#0d6efd;color:#fff}.c-T{background:#198754;color:#fff}.c-o{background:#f1f3f5}
+ .c-\#{background:#343a40;color:#fff}.c-D{background:#dc3545;color:#fff}
+ .on-path{outline:4px solid #ffc107;outline-offset:-4px;box-shadow:0 0 8px #ffc107}
+</style>
+<div class="container my-4">
+ <p class="text-muted">Q-Learning with SGDRegressor in a {{ grid|length }}×{{ grid[0]|length }} environment.</p>
+
+ <div class="row g-4">
+  <div class="col-lg-6"><div class="card h-100"><div class="card-header">Environment</div><div class="card-body">
+   {% macro board(path=None) %}
+   <table class="rl-grid mx-auto">{% for row in grid %}{% set r = loop.index0 %}<tr>
+    {% for ch in row %}<td class="c-{{ ch }} {{ 'on-path' if path and (r, loop.index0) in path }}">{{ ch }}</td>{% endfor %}</tr>{% endfor %}</table>
+   {% endmacro %}
+   {{ board() }}
+   <div class="mt-3 small">
+    {% for ch,n in counts.items() %}<span class="badge text-bg-secondary me-1">{{ ch }}: {{ n }}</span>{% endfor %}
+   </div>
+   <ul class="small mt-2 mb-0"><li><b>A</b> start · <b>T</b> target · <b>o</b> available path · <b>#</b> wall · <b>D</b> danger zone</li></ul>
+  </div></div></div>
+
+  <div class="col-lg-6">
+   <div class="card mb-3"><div class="card-header">Reward system</div>
+    <table class="table table-sm mb-0"><tbody>
+     <tr><td>Normal valid move</td><td>{{ rewards.normal }}</td></tr>
+     <tr><td>Invalid move (outside the grid)</td><td>{{ rewards.invalid }}</td></tr>
+     <tr><td>Hitting a wall #</td><td>{{ rewards.wall }}</td></tr>
+     <tr><td>Entering a Danger Zone D</td><td>{{ rewards.danger }}</td></tr>
+     <tr><td>Reaching the goal T</td><td>+{{ rewards.goal }}</td></tr></tbody></table></div>
+   <div class="card"><div class="card-header">Hyperparameters</div>
+    <table class="table table-sm mb-0"><tbody>
+     <tr><td>Training episodes</td><td>{{ cfg.episodes }}</td></tr>
+     <tr><td>Max steps per episode</td><td>{{ cfg.max_steps }}</td></tr>
+     <tr><td>Initial ε</td><td>{{ cfg.epsilon }}</td></tr>
+     <tr><td>Minimum ε</td><td>{{ cfg.epsilon_min }}</td></tr>
+     <tr><td>ε decay</td><td>{{ cfg.epsilon_decay }} per episode</td></tr>
+     <tr><td>γ (discount factor)</td><td>{{ cfg.gamma }}</td></tr>
+     <tr><td>η (SGD learning rate)</td><td>{{ cfg.eta0 }}</td></tr></tbody></table>
+    <div class="card-footer small text-muted">γ = 0.95 values the distant goal; ε decays from 1.0 to 0.05 (from exploring to exploiting); η = 0.1 updates quickly without oscillating.</div></div>
+  </div>
+ </div>
+
+ <form method="post" class="my-4"><button class="btn btn-success btn-lg"><i class="bi bi-play-fill"></i> Train Agent</button></form>
+
+ {% if result %}
+ <h2>Training Results</h2>
+ <div class="row g-3 mb-4">
+  {% for label,val in [("Total episodes",result.episodes),("Successful episodes",result.successes),("Success percentage",result.success_pct ~ "%"),("Average reward",result.avg_reward),("Final ε",result.final_epsilon),("Moves in final evaluation",result.n_moves),("Total reward in final evaluation",result.eval_reward),("Goal reached","Yes" if result.goal_reached else "No")] %}
+  <div class="col-6 col-md-3"><div class="card text-center"><div class="card-body"><div class="fs-4 fw-bold">{{ val }}</div><div class="small text-muted">{{ label }}</div></div></div></div>
+  {% endfor %}
+ </div>
+ <div class="alert {{ 'alert-success' if result.goal_reached else 'alert-danger' }}">
+  {% if result.goal_reached %}The agent reached the goal entering {{ result.danger_hits }} Danger Zone(s).{% else %}The agent did not reach the goal.{% endif %}</div>
+
+ <h2>Learned Path</h2>
+ <div class="card mb-4"><div class="card-body">{{ board(result.path) }}
+  <p class="small text-center mt-2 mb-0"><span class="badge text-bg-warning">yellow border</span> = path learned by the agent (original characters are preserved)</p></div></div>
+
+ <h2>Step-by-Step Evaluation (ε = 0)</h2>
+ <div class="table-responsive mb-4"><table class="table table-striped table-sm">
+  <thead class="table-dark"><tr><th>Step</th><th>State</th><th>Action</th><th>Next State</th><th>Cell Type</th><th>Reward</th></tr></thead><tbody>
+  {% for t in result.steps %}<tr><td>{{ t.step }}</td><td>{{ t.state }}</td><td>{{ t.action }}</td><td>{{ t.next_state }}</td><td>{{ t.cell }}</td><td>{{ t.reward }}</td></tr>{% endfor %}
+ </tbody></table></div>
+
+ <h2>Q-Values</h2>
+ <div class="table-responsive" style="max-height:480px;overflow:auto"><table class="table table-sm table-hover">
+  <thead class="table-dark sticky-top"><tr><th>State</th>{% for a in actions %}<th>{{ a }}</th>{% endfor %}</tr></thead><tbody>
+  {% for q in result.qtable %}{% set best = q.q.index(q.q|max) %}<tr><td>{{ q.state }}</td>
+   {% for v in q.q %}<td class="{{ 'table-success fw-bold' if loop.index0 == best }}">{{ v }}</td>{% endfor %}</tr>{% endfor %}
+ </tbody></table></div>
+ {% endif %}
+</div>
+{% endblock %}

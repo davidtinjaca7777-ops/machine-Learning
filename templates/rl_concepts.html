@@ -1,0 +1,53 @@
+{% extends "rl_base.html" %}
+{% block title %}Reinforcement Learning – Concepts{% endblock %}
+{% block navtitle %}Reinforcement Learning – Concepts{% endblock %}
+{% block content %}
+<main class="container mt-4">
+ <div class="alert alert-info"><i class="bi bi-info-circle"></i> <b>What is Reinforcement Learning?</b> An agent learns by trial and error to choose actions in an environment in order to maximize the accumulated reward. In this exercise, a virtual robot learns to travel from <b>A</b> to <b>T</b> on a 10×10 grid with walls <b>#</b> and danger zones <b>D</b>.</div>
+
+ <div class="card mb-4 shadow-sm"><div class="card-header">Interaction loop</div><div class="card-body text-center">
+  <span class="badge text-bg-primary fs-6">Agent</span> <i class="bi bi-arrow-right"></i> <span class="badge text-bg-secondary fs-6">Action</span> <i class="bi bi-arrow-right"></i>
+  <span class="badge text-bg-dark fs-6">Environment</span> <i class="bi bi-arrow-right"></i> <span class="badge text-bg-success fs-6">Reward + New state</span> <i class="bi bi-arrow-repeat"></i></div></div>
+
+ <h3>Problem elements</h3>
+ <div class="row g-3 mb-4">
+ {% for icon,t,d in [
+  ("robot","Agent","The virtual robot that decides where to move."),
+  ("grid-3x3","Environment","The 10×10 grid and its rules: the robot cannot leave the map or cross a #."),
+  ("geo-alt","State (s)","The agent's current row and column, e.g. (3,4)."),
+  ("arrows-move","Action (a)","Up, Down, Left or Right."),
+  ("trophy","Reward","+100 for reaching T; −1 for each normal step."),
+  ("exclamation-triangle","Penalty","−5 for hitting a wall or an invalid move; −10 for entering a D zone."),
+  ("signpost-split","Policy π","The rule that chooses an action in each state: the one with the best Q(s,a)."),
+  ("1-circle","Step","One action and the environment's response to it."),
+  ("film","Episode","A sequence of steps from A until reaching T or running out of 200 steps."),
+  ("database","Experience","The tuple (s, a, r, s') used to learn through partial_fit().")] %}
+  <div class="col-md-6 col-lg-4"><div class="card h-100 shadow-sm"><div class="card-body"><h5><i class="bi bi-{{icon}}"></i> {{t}}</h5><p class="mb-0">{{d}}</p></div></div></div>
+ {% endfor %}</div>
+
+ <h3>Learning</h3>
+ <div class="accordion mb-4" id="acc">
+ {% for t,d in [
+  ("Exploration","Trying random actions to discover the map (where the D zones and walls are)."),
+  ("Exploitation","Choosing the action with the highest estimated Q-value, using what has already been learned."),
+  ("Epsilon-Greedy strategy","With probability ε the agent explores; with probability 1−ε it exploits. ε starts at 1.0 and decays ×0.992 per episode down to 0.05."),
+  ("Immediate reward (r)","The value received right after acting, e.g. −10 when stepping on a D cell."),
+  ("Return (G)","The sum of future rewards: G = r₁ + γr₂ + γ²r₃ + …"),
+  ("Discount factor (γ)","Weights the future. With γ = 0.95, the goal's reward influences cells that are far away."),
+  ("State value V(s)","Expected return starting from s and following the policy: V(s) = max_a Q(s,a)."),
+  ("Action value Q(s,a)","Expected return of taking action a in state s. Every cell has 4 values (see the Q-values table in the Application page).")] %}
+  <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#c{{loop.index}}">{{t}}</button></h2>
+   <div id="c{{loop.index}}" class="accordion-collapse collapse" data-bs-parent="#acc"><div class="accordion-body">{{d}}</div></div></div>
+ {% endfor %}</div>
+
+ <div class="card mb-4 shadow-sm"><div class="card-header"><i class="bi bi-calculator"></i> Q-Learning</div><div class="card-body">
+  <p class="text-center fs-5">Q(s,a) ← r + γ · max<sub>a'</sub> Q(s',a')</p>
+  <p class="mb-0">Q is estimated with one <code>SGDRegressor</code> per action: <code>predict()</code> computes the Q-values and <code>partial_fit()</code> corrects them with the target r + γ·max Q(s',·) after every transition.</p></div></div>
+
+ <table class="table table-bordered text-center"><thead class="table-dark"><tr><th>Concept</th><th>In this exercise</th></tr></thead><tbody>
+  <tr><td>Agent</td><td>Robot starting at A</td></tr><tr><td>Environment</td><td>10×10 grid (A, T, o, #, D)</td></tr>
+  <tr><td>State</td><td>(row, column)</td></tr><tr><td>Actions</td><td>Up, Down, Left, Right</td></tr>
+  <tr><td>End of episode</td><td>Reaching T or 200 steps</td></tr></tbody></table>
+ <a class="btn btn-primary" href="{{ url_for('rl_app') }}">Go to the application <i class="bi bi-arrow-right"></i></a>
+</main>
+{% endblock %}
