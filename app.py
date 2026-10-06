@@ -4,6 +4,7 @@ from Kmeans import init_kmeans_routes
 from RandomForest import init_randomforest_routes
 from LinearRegression import init_linear_routes
 from LogisticRegression import init_logistic_routes
+from ReinforcementLearning import init_rl_routes
 
 app = Flask(__name__)
 
@@ -72,6 +73,7 @@ init_kmeans_routes(app)
 init_randomforest_routes(app)
 init_linear_routes(app)
 init_logistic_routes(app)
+init_rl_routes(app)
 
 if __name__ == "__main__":
     app.run(debug=True)
